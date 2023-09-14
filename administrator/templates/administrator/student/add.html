@@ -1,0 +1,64 @@
+{% extends 'administrator/admin.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4">
+        <h2>Ավելացնել ուսանող</h2>
+    </div>
+    <div class="clearfix"></div>
+    <br>
+    <div id="respond" class="container">
+        <form action="" method="post">{% csrf_token %}
+          <p>
+              {{ form.first_name }}
+            <label for="id_firstname"><small>Անուն (Պարտադիր*)</small></label>
+          </p>
+          <p>
+              {{ form.last_name }}
+            <label for="id_lastname"><small>Ազգանուն (Պարտադիր*)</small></label>
+          </p>
+          <p>
+              {{ form.surname }}
+              <label for="id_surname"><small>Հայրանուն (Պարտադիր*)</small></label>
+          </p>
+          <p>
+            {{ form.group }}
+            <label for="id_group"><small>Խումբ (Պարտադիր*)</small></label>
+          </p>
+          <p>
+            {{ form.birthday }}
+            <label for="id_birthday"><small>Ծննդյան ամսաթիվ</small></label>
+          </p>
+          <p>
+              {{ form.joined }}
+              <label for="id_joined"><small>Ընդունման ամսաթիվ</small></label>
+          </p>
+          <p>
+            {{ form.email }}
+            <label for="id_email"><small>Էլ-Փոստ</small></label>
+          </p>
+          <p>
+            {{ form.phone }}
+            <label for="id_phone"><small>Հեռախոսահամար</small></label>
+          </p>
+          <p>
+              {{ form.tuition_fee }}
+              <label for="id_tuition_fee"><small>Վճար</small></label>
+          </p>
+          <p>
+              {{ form.state_order }}
+              <label for="id_state_order"><small>Պետպատվեր</small></label>
+          </p>
+          <p>
+            {{ form.image }}
+            <label for="id_image"><small>Նկար</small></label>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="Պահպանել">
+            &nbsp;
+            <input name="reset" type="reset" id="reset" tabindex="5" value="Զրոյացնել ձևաչափը">
+          </p>
+        </form>
+    </div>
+{% endblock %}
