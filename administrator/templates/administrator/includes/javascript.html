@@ -42,7 +42,7 @@
          $(document).on("click", "button[name='edit']", function(e) {
              var itemList = $("tr > td > input[type='checkbox']:checked");
              var curURL = window.location.href;
-             var editUrl = curURL.substr(0, curURL.indexOf(".html"))+"/";
+             var editUrl = curURL.substr(0, curURL.indexOf(".html"));
              var params = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
              console.log(itemList);
              $(itemList).each(function(key, value){

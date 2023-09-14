@@ -28,6 +28,7 @@ class Add(generic.FormView):
         form.save()
         return super(Add, self).form_valid(form)
 
+
 @method_decorator(login_required, name='dispatch')
 class Edit(generic.UpdateView):
     template_name = 'administrator/staff/edit.html'
@@ -59,12 +60,13 @@ class Edit(generic.UpdateView):
             messages.success(self.request, 'Աշխատողը հաջողությամբ Խմբագրվել է։')
             return HttpResponseRedirect(self.get_success_url())
         else:
-            messages.error(self.request, 'Սխալ! '+ str(form.errors))
+            messages.error(self.request, 'Սխալ! ' + str(form.errors))
             return self.render_to_response(
-              self.get_context_data(form=form))
+                self.get_context_data(form=form))
 
     def get_success_url(self):
         return reverse_lazy('administration:edit-worker', kwargs={'pk': int(self.kwargs['pk'])})
+
 
 class List(generic.TemplateView):
     template_name = 'administrator/staff/index.html'

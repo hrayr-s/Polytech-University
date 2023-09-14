@@ -8,7 +8,7 @@ def loadContent(request):
     context = {}
     students = Student.objects.all()
     for stud in students:
-        stud.Group.Profession.name
+        stud.group.profession.name
 
     current_url = resolve(request.path_info).url_name
     try:
