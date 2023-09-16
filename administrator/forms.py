@@ -1,18 +1,17 @@
 from django import forms
 
 from university import models
-from university.models import Student, Department, Faculty, Group, AbsenceLog, Subject
 
 
-class addStudent(forms.ModelForm):
+class AddStudentForm(forms.ModelForm):
     class Meta:
-        model = Student
+        model = models.Student
         fields = ['first_name', 'last_name', 'surname', 'group', 'birthday', 'joined', 'email']
 
 
-class Ambion(forms.ModelForm):
+class DepartmentForm(forms.ModelForm):
     class Meta:
-        model = Department
+        model = models.Department
         fields = ['name', 'shortname', 'manager', 'teachers']
         widgets = {
             'manager': forms.Select(attrs={'class': 'select2_single form-control'}),
@@ -22,9 +21,9 @@ class Ambion(forms.ModelForm):
         }
 
 
-class Fakultet(forms.ModelForm):
+class FacultyForm(forms.ModelForm):
     class Meta:
-        model = Faculty
+        model = models.Faculty
         fields = ['name', 'shortname', 'dean']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -33,9 +32,9 @@ class Fakultet(forms.ModelForm):
         }
 
 
-class Group(forms.ModelForm):
+class GroupForm(forms.ModelForm):
     class Meta:
-        model = Group
+        model = models.Group
         fields = ['name', 'profession', 'created', 'lecturers']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -45,9 +44,9 @@ class Group(forms.ModelForm):
         }
 
 
-class Matyan(forms.ModelForm):
+class AbsenceLogForm(forms.ModelForm):
     class Meta:
-        model = AbsenceLog
+        model = models.AbsenceLog
         fields = ['student', 'group', 'loose', 'minute', 'date']
         widgets = {
             'date': forms.DateInput(attrs={'class': 'form-control'}),
@@ -58,7 +57,7 @@ class Matyan(forms.ModelForm):
         }
 
 
-class Points(forms.ModelForm):
+class PointsForm(forms.ModelForm):
     class Meta:
         model = models.Points
         fields = ['value', 'student', 'type', 'exam']
@@ -70,7 +69,7 @@ class Points(forms.ModelForm):
         }
 
 
-class Profession(forms.ModelForm):
+class ProfessionForm(forms.ModelForm):
     class Meta:
         model = models.Profession
         fields = ['name', 'faculty', 'years', 'remote', 'subjects']
@@ -83,7 +82,7 @@ class Profession(forms.ModelForm):
         }
 
 
-class Staff(forms.ModelForm):
+class StaffForm(forms.ModelForm):
     class Meta:
         model = models.Staff
         fields = ['fullname', 'works_since', 'type']
@@ -94,9 +93,9 @@ class Staff(forms.ModelForm):
         }
 
 
-class Student(forms.ModelForm):
+class StudentForm(forms.ModelForm):
     class Meta:
-        model = Student
+        model = models.Student
         fields = ['first_name', 'last_name', 'surname', 'group', 'birthday', 'joined', 'email', 'phone', 'tuition_fee',
                   'state_order', 'image']
         widgets = {
@@ -114,9 +113,9 @@ class Student(forms.ModelForm):
         }
 
 
-class Subject(forms.ModelForm):
+class SubjectForm(forms.ModelForm):
     class Meta:
-        model = Subject
+        model = models.Subject
         fields = ['name', 'lecturers', 'course', 'lessons']
         widgets = {
             'lecturers': forms.SelectMultiple(attrs={'class': 'select2_multiple form-control'}),
@@ -126,7 +125,7 @@ class Subject(forms.ModelForm):
         }
 
 
-class Exam(forms.ModelForm):
+class ExamForm(forms.ModelForm):
     class Meta:
         model = models.Exam
         fields = ['subject', 'group', 'type', 'lecturer']

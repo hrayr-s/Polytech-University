@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 
-from administrator.forms import Points as ModelForm
+from administrator.forms import PointsForm
 from university.models import Group, Student, Points, PointType, Exam
 
 
@@ -14,7 +14,7 @@ from university.models import Group, Student, Points, PointType, Exam
 class Add(generic.FormView):
     template_name = 'administrator/points/add.html'
     model = Points
-    form_class = ModelForm
+    form_class = PointsForm
     success_url = reverse_lazy('administration:add-point')
 
     def get_context_data(self, **kwargs):
@@ -34,11 +34,12 @@ class Add(generic.FormView):
         form.save()
         return super(Add, self).form_valid(form)
 
+
 @method_decorator(login_required, name='dispatch')
 class Edit(generic.UpdateView):
     template_name = 'administrator/points/edit.html'
     model = Points
-    form_class = ModelForm
+    form_class = PointsForm
 
     def get_context_data(self, **kwargs):
         context = super(Edit, self).get_context_data(**kwargs)
@@ -71,12 +72,13 @@ class Edit(generic.UpdateView):
             messages.success(self.request, 'Գնահատականը հաջողությամբ Խմբագրվել է։')
             return HttpResponseRedirect(self.get_success_url())
         else:
-            messages.error(self.request, 'Սխալ! '+ str(form.errors))
+            messages.error(self.request, 'Սխալ! ' + str(form.errors))
             return self.render_to_response(
-              self.get_context_data(form=form))
+                self.get_context_data(form=form))
 
     def get_success_url(self):
         return reverse_lazy('administration:edit-point', kwargs={'pk': int(self.kwargs['pk'])})
+
 
 class List(generic.TemplateView):
     template_name = 'administrator/points/index.html'

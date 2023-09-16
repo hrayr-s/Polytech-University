@@ -7,3 +7,23 @@ button.log-out {
 button.log-out:hover {
     color: rgb(224, 224, 224);
 }
+
+ul.nav-pagination {
+    list-style: none;
+    float: right;
+}
+
+ul.nav-pagination li {
+    float: left;
+    margin: 10px;
+}
+
+ul.nav-pagination li a {
+    background: #48282F;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+ul.nav-pagination li a:hover {
+    background: #591434;
+}

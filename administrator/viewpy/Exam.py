@@ -6,15 +6,15 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 
-from administrator.forms import Exam as ModelForm
-from university.models import Exam as CurModel
+from administrator.forms import ExamForm as ExamForm
+from university.models import Exam
 
 
 @method_decorator(login_required, name='dispatch')
 class Add(generic.FormView):
     template_name = 'administrator/exam/add.html'
-    model = CurModel
-    form_class = ModelForm
+    model = Exam
+    form_class = ExamForm
     success_url = reverse_lazy('administration:add-exam')
 
     def get(self, request, *args, **kwargs):
@@ -29,8 +29,8 @@ class Add(generic.FormView):
 @method_decorator(login_required, name='dispatch')
 class Edit(generic.UpdateView):
     template_name = 'administrator/exam/edit.html'
-    model = CurModel
-    form_class = ModelForm
+    model = Exam
+    form_class = ExamForm
 
     def get(self, request, *args, **kwargs):
         super(Edit, self).get(request, *args, **kwargs)
@@ -60,7 +60,7 @@ class List(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(List, self).get_context_data(**kwargs)
-        exams = CurModel.objects.all()
+        exams = Exam.objects.all()
         request = self.request
         page = 1
         if 'page' in self.kwargs:

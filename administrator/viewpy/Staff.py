@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 
-from administrator.forms import Staff as ModelForm
+from administrator.forms import StaffForm as ModelForm
 from university.models import Staff, WorkerType
 
 

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 
-from administrator.forms import Subject as ModelForm
+from administrator.forms import SubjectForm
 from university.models import Subject as CurModel, Staff
 
 
@@ -14,7 +14,7 @@ from university.models import Subject as CurModel, Staff
 class Add(generic.FormView):
     template_name = 'administrator/subject/add.html'
     model = CurModel
-    form_class = ModelForm
+    form_class = SubjectForm
     success_url = reverse_lazy('administration:add-subject')
 
     def get_context_data(self, **kwargs):
@@ -35,7 +35,7 @@ class Add(generic.FormView):
 class Edit(generic.UpdateView):
     template_name = 'administrator/subject/edit.html'
     model = CurModel
-    form_class = ModelForm
+    form_class = SubjectForm
 
     def get_context_data(self, **kwargs):
         context = super(Edit, self).get_context_data(**kwargs)

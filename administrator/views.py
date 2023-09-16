@@ -8,10 +8,12 @@ from administrator import forms
 from university.models import Student, Group
 
 
-class home(generic.TemplateView):
+class Home(generic.TemplateView):
     template_name = 'administrator/admin.html'
+
     def get(self, request, *args, **kwargs):
         return HttpResponseRedirect(reverse_lazy('administration:list-students'))
+
 
 class Students(generic.TemplateView):
     template_name = 'administrator/student/index.html'
@@ -45,9 +47,9 @@ class Students(generic.TemplateView):
 
     @staticmethod
     def add(request):
-        form = forms.addStudent(request.POST or None)
+        form = forms.AddStudentForm(request.POST or None)
         groups = Group.objects.all()
-        if request.method =="POST" and form.is_valid():
+        if request.method == "POST" and form.is_valid():
             form.save()
 
         context = {}
@@ -55,4 +57,3 @@ class Students(generic.TemplateView):
         context['groups'] = groups
 
         return render(request, 'administrator/student/add.html', context)
-

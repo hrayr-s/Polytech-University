@@ -47,7 +47,7 @@
              console.log(itemList);
              $(itemList).each(function(key, value){
                  var randomnumber = Math.floor((Math.random()*100)+1);
-                 window.open(editUrl + $(value).val() + "/խմբագրել․html", "_blank",'PopUp',randomnumber);
+                 window.open(editUrl + $(value).val() + "/խմբագրել", "_blank",'PopUp',randomnumber);
              });
          });
          $(document).on("click", "button[name='delete']", function(e) {
